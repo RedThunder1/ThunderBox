@@ -1,0 +1,31 @@
+.navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: #0a0d13;
+    min-width: 200px;
+    height: 100vh;
+    padding: 0;
+    align-items: center;
+}
+
+img {
+    padding: 10px;
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.nav_link {
+    color: white;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 10px 40px;
+    border-radius: 8px ;
+}
+
+.nav_link > i {
+    padding-right: 15px;
+}
+.nav_link:hover {
+    background-color: #141a25;
+}
