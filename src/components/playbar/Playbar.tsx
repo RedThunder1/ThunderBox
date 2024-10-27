@@ -6,14 +6,10 @@ let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
 let song_photo: HTMLImageElement;
 
-let start_control: HTMLElement;
-let play_control: HTMLElement;
-let end_control: HTMLElement;
-
-let playtime_slider: number = 0;
-let volume_slider: number = 0;
-let current_playtime: string;
-let total_playtime: string;
+let playtime_slider: HTMLInputElement;
+let volume_slider: HTMLInputElement;
+let current_playtime: HTMLDivElement;
+let total_playtime: HTMLDivElement;
 
 let playing: boolean = false;
 let updateTimer: NodeJS.Timer;
@@ -45,11 +41,14 @@ function loadTrack(track_index: number) {
     clearInterval(updateTimer);
     resetValues();
     current_track.src = track_list[track_index].path;
-    current_track.load();
+    current_track.load()
 
     //song_photo.src = track_list[track_index].image
     //song_name.textContent = track_list[track_index].name;
     //song_author.textContent = track_list[track_index].artist;
+
+    //playtime_slider.max
+
 
     updateTimer = setInterval(seekUpdate, 1000);
     current_track.addEventListener("ended", nextTrack);
@@ -57,9 +56,9 @@ function loadTrack(track_index: number) {
 
 function resetValues() {
     try {
-        current_playtime = "00:00";
-        total_playtime = "00:00";
-        playtime_slider = 0;
+        current_playtime.innerText = "00:00";
+        total_playtime.innerText = "00:00";
+        playtime_slider.valueAsNumber = 0;
     } catch (e) {
         console.error(e);
     }
@@ -97,11 +96,11 @@ function prevTrack() {
 }
 
 function seekTo() {
-    current_track.currentTime = current_track.duration * (playtime_slider / 100);
+    current_track.currentTime = current_track.duration * (playtime_slider.valueAsNumber / 100);
 }
 
 function setVolume() {
-    current_track.volume = volume_slider / 100;
+    current_track.volume = volume_slider.valueAsNumber / 100;
 }
 
 function seekUpdate() {
@@ -110,20 +109,21 @@ function seekUpdate() {
     if (!isNaN(current_track.duration)) {
         seekPosition = current_track.currentTime * (100 / current_track.duration);
 
-        playtime_slider = seekPosition;
+        playtime_slider.valueAsNumber = seekPosition;
 
         let currentMinutes = Math.floor(current_track.currentTime / 60);
         let currentSeconds = Math.floor(current_track.currentTime - currentMinutes * 60);
         let durationMinutes = Math.floor(current_track.duration / 60);
         let durationSeconds = Math.floor(current_track.duration - durationMinutes * 60);
 
-        if (currentSeconds < 10) { currentSeconds = +"0" + currentSeconds; }
-        if (durationSeconds < 10) { durationSeconds = +"0" + durationSeconds; }
+        if (currentSeconds < 10) { currentSeconds = + "0" + currentSeconds; }
         if (currentMinutes < 10) { currentMinutes = +"0" + currentMinutes; }
+
+        if (durationSeconds < 10) { durationSeconds = +"0" + durationSeconds; }
         if (durationMinutes < 10) { durationMinutes = +"0" + durationMinutes; }
 
-        current_track.textContent = currentMinutes + ":" + currentSeconds;
-        total_playtime = durationMinutes + ":" + durationSeconds;
+        current_playtime.innerText = currentMinutes + ":" + currentSeconds;
+        total_playtime.innerText = durationMinutes + ":" + durationSeconds;
     }
 }
 
@@ -134,10 +134,11 @@ function Playbar() {
         song_name = document.getElementById('song_name') as HTMLParagraphElement;
         song_author = document.getElementById("song_author") as HTMLParagraphElement;
         song_photo = document.getElementById("song_photo") as HTMLImageElement;
+        current_playtime = document.getElementById("current_playtime") as HTMLDivElement;
+        total_playtime = document.getElementById("total_playtime") as HTMLDivElement;
 
-        start_control = document.getElementById("start_control")!;
-        play_control = document.getElementById("play_control")!;
-        end_control = document.getElementById("end_control")!;
+        volume_slider = document.getElementById("volume")! as HTMLInputElement;
+        playtime_slider = document.getElementById("slider")! as HTMLInputElement;
     }, [])
 
     return (
@@ -157,12 +158,12 @@ function Playbar() {
                 </li>
             </ul>
             <div className="playtime_slider">
-                <input type="range" min="1" max="100" value={playtime_slider} className="slider" id="slider"/>
+                <input type="range" min="1" max="100" value="0" className="slider" id="slider"/>
             </div>
             <div className="playtime">
-                <div className="current_playtime" id="current_playtime">{current_playtime}</div>
+                <div className="current_playtime" id="current_playtime">00:00</div>
                 <p>/</p>
-                <div className="total_playtime" id="total_playtime">{total_playtime}</div>
+                <div className="total_playtime" id="total_playtime">00:00</div>
             </div>
 
             <div className="song_info">

@@ -68,12 +68,12 @@
 
 .slider::-moz-range-progress {
     height: 100%;
-    background: #393a3e;
+    background: #525359;
 }
 
 .slider::-ms-fill-lower {
     height: 100%;
-    background: #393a3e;
+    background: #525359;
 }
 
 .song_info {
