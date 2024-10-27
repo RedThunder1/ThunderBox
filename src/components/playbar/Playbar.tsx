@@ -96,7 +96,7 @@ function prevTrack() {
 }
 
 function seekTo() {
-    current_track.currentTime = current_track.duration * (playtime_slider.valueAsNumber / 100);
+    current_track.currentTime = playtime_slider.valueAsNumber;
 }
 
 function setVolume() {
@@ -104,10 +104,15 @@ function setVolume() {
 }
 
 function seekUpdate() {
+    if (playtime_slider.max != current_track.duration.toString()) {
+        playtime_slider.max = current_track.duration.toString();
+    }
+
+
     let seekPosition = 0;
 
     if (!isNaN(current_track.duration)) {
-        seekPosition = current_track.currentTime * (100 / current_track.duration);
+        seekPosition = current_track.currentTime;
 
         playtime_slider.valueAsNumber = seekPosition;
 
@@ -158,11 +163,11 @@ function Playbar() {
                 </li>
             </ul>
             <div className="playtime_slider">
-                <input type="range" min="1" max="100" value="0" className="slider" id="slider"/>
+                <input type="range" min="1" max="100" className="slider" id="slider" onChange={seekTo}/>
             </div>
             <div className="playtime">
                 <div className="current_playtime" id="current_playtime">00:00</div>
-                <p>/</p>
+                <p> / </p>
                 <div className="total_playtime" id="total_playtime">00:00</div>
             </div>
 

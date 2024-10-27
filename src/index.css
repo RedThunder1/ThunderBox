@@ -22,6 +22,10 @@ h1, h2, h3 {
   line-height: 1.2;
 }
 
+p {
+  white-space: pre;
+}
+
 ul {
   list-style: none;
 }

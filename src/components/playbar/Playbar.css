@@ -56,13 +56,13 @@
     appearance: none;
     width: 25px;
     height: 20px;
-    background: #10121b;
+    background: #111420;
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
     height: 20px;
-    background: #10121b;
+    background: #111420;
     cursor: pointer;
 }
 
