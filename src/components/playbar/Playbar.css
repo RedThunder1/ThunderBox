@@ -46,6 +46,7 @@
     background-color: transparent;
     position: absolute;
     width: 99vw;
+    height: 10px;
     left: 0.5vw;
     opacity: 0.2;
     outline: none;
@@ -79,18 +80,19 @@
 .song_info {
     position: absolute;
     width: 300px;
-    height: 60px;
+    height: 80px;
     display: grid;
     grid-column-gap: 20px;
     left: calc(50% - 150px);
-    top: calc(50% - 30px);
+    top: 10px;
     overflow: hidden;
     color: white;
 }
 
 .song_photo {
-    height: 60px;
-    width: 60px;
+    padding: 0;
+    height: 80px;
+    width: 80px;
     grid-row: 1/3;
     grid-column: 1;
 }

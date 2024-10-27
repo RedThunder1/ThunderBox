@@ -43,11 +43,11 @@ function loadTrack(track_index: number) {
     current_track.src = track_list[track_index].path;
     current_track.load()
 
-    //song_photo.src = track_list[track_index].image
-    //song_name.textContent = track_list[track_index].name;
-    //song_author.textContent = track_list[track_index].artist;
-
-    //playtime_slider.max
+    try {
+        song_photo.src = track_list[track_index].image
+        song_name.textContent = track_list[track_index].name;
+        song_author.textContent = track_list[track_index].artist;
+    } catch (e) { console.log(e) }
 
 
     updateTimer = setInterval(seekUpdate, 1000);
@@ -132,8 +132,6 @@ function seekUpdate() {
     }
 }
 
-loadTrack(songIndex);
-
 function Playbar() {
     useEffect(() => {
         song_name = document.getElementById('song_name') as HTMLParagraphElement;
@@ -144,6 +142,7 @@ function Playbar() {
 
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
+        loadTrack(songIndex);
     }, [])
 
     return (
@@ -172,7 +171,7 @@ function Playbar() {
             </div>
 
             <div className="song_info">
-                <div className="song_photo" id="song_photo"></div>
+                <img className="song_photo" id="song_photo" alt="song_photo"></img>
                 <p className="song_name" id="song_name">Name</p>
                 <p className="song_author" id="song_author">Author</p>
             </div>
