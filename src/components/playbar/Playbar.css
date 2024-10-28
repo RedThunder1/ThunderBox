@@ -37,8 +37,9 @@
     color: white;
     position: relative;
     left: 220px;
-    top: 35px;
+    top: 30px;
     display: flex;
+    font-size: 18px;
 }
 
 .slider {
@@ -107,6 +108,8 @@
     grid-column: 2;
     width: 220px;
     height: 30px;
+    font-size: 13px;
+    padding-left: 10px;
 }
 
 .volume_controls {
@@ -117,4 +120,34 @@
 .volume_controls > i {
     color: white;
     font-size: 25px;
+}
+
+.volume {
+    margin-right: 10px;
+    background-color: #0e1119;
+}
+
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 20px;
+    background: #111420;
+}
+
+.volume::-moz-range-thumb {
+    width: 25px;
+    height: 20px;
+    background: #111420;
+    cursor: pointer;
+}
+
+.volume::-moz-range-progress {
+    height: 100%;
+    background: #16181d;
+}
+
+.volume::-ms-fill-lower {
+    height: 100%;
+    background: #16181d;
 }

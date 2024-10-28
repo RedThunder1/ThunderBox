@@ -1,0 +1,27 @@
+.library {
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    padding: 20px 0 10px 20px;
+}
+
+.playlists {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.playlists_item {
+
+}
+
+.playlist {
+    background: #222935;
+    border-radius: 10px;
+    margin: 10px;
+    width: 98%;
+    height: 100px;
+}

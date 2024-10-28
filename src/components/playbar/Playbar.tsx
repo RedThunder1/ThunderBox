@@ -104,7 +104,7 @@ function setVolume() {
 }
 
 function seekUpdate() {
-    if (playtime_slider.max != current_track.duration.toString()) {
+    if (playtime_slider.max !== current_track.duration.toString()) {
         playtime_slider.max = current_track.duration.toString();
     }
 
@@ -177,7 +177,7 @@ function Playbar() {
             </div>
             <div className="volume_controls">
                 <input type="range" min="1" max="100" className="volume" id="volume" onChange={setVolume}/>
-                <i className="icon-volume-1"></i>
+                <i className="icon-volume-2"></i>
             </div>
         </div>
     );

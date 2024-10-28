@@ -15,6 +15,12 @@ function Navbar() {
                     <button className="nav_link"><i className="icon-playlist"></i>   Library</button>
                 </li>
             </ul>
+            <div className="settings">
+                <div className="account">
+                    <button className="account_button"><i className="icon-user"></i></button>
+                </div>
+                <button className="settings_button"><i className="icon-settings"></i></button>
+            </div>
         </div>
     );
 }
