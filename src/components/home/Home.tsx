@@ -1,28 +1,47 @@
 import React from 'react';
 import './Home.css'
+import classes from "../library/Library.module.css";
 
 function Home() {
     return (
         <div className="home">
             <h1>Playlists</h1>
             <ul className="playlists">
-                <li className="playlist_item">
-                    <button className="playlist"></button>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
-                <li className="playlist_item">
-                    <div className="playlist"></div>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
-                <li className="playlist_item">
-                    <div className="playlist"></div>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
-                <li className="playlist_item">
-                    <div className="playlist"></div>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
-                <li className="playlist_item">
-                    <div className="playlist"></div>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
-                <li className="playlist_item">
-                    <div className="playlist"></div>
+                <li className="playlists_item">
+                    <div className="playlist">
+                        <p className="playlist_name">Name</p>
+                        <p className="playlist_count">Song Count</p>
+                    </div>
                 </li>
             </ul>
             <h1>Songs</h1>

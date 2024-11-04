@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import './Playbar.css';
 
-
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
 let song_photo: HTMLImageElement;
@@ -116,19 +115,18 @@ function seekUpdate() {
 
         playtime_slider.valueAsNumber = seekPosition;
 
-        let currentMinutes = Math.floor(current_track.currentTime / 60);
-        let currentSeconds = Math.floor(current_track.currentTime - currentMinutes * 60);
-        let durationMinutes = Math.floor(current_track.duration / 60);
-        let durationSeconds = Math.floor(current_track.duration - durationMinutes * 60);
+        let currentMinutes: any = Math.floor(current_track.currentTime / 60);
+        let currentSeconds: any = Math.floor(current_track.currentTime - currentMinutes * 60);
+        let durationMinutes: any = Math.floor(current_track.duration / 60);
+        let durationSeconds: any = Math.floor(current_track.duration - durationMinutes * 60);
+        let currentTime = [currentMinutes.toString(), currentSeconds.toString()]
+        let durationTime = [durationMinutes.toString(), durationSeconds.toString()];
 
-        if (currentSeconds < 10) { currentSeconds = + "0" + currentSeconds; }
-        if (currentMinutes < 10) { currentMinutes = +"0" + currentMinutes; }
+        if (currentSeconds < 10) { currentTime[1] = "0" + currentTime[1]}
+        if (durationSeconds < 10) { durationTime[1] = "0" + durationTime[1]}
 
-        if (durationSeconds < 10) { durationSeconds = +"0" + durationSeconds; }
-        if (durationMinutes < 10) { durationMinutes = +"0" + durationMinutes; }
-
-        current_playtime.innerText = currentMinutes + ":" + currentSeconds;
-        total_playtime.innerText = durationMinutes + ":" + durationSeconds;
+        current_playtime.innerText = currentTime[0] + ":" + currentTime[1];
+        total_playtime.innerText = durationTime[0] + ":" + durationTime[1];
     }
 }
 

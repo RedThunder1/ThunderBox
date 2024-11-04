@@ -1,30 +1,95 @@
 import React from 'react';
-import './Library.css'
+import classes from './Library.module.css'
 
 function Library() {
     return (
-        <div className="library">
-            <h1>Library</h1>
-            <ul className="playlists">
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+        <div className={classes.library}>
+            <input className={classes.searchbar} placeholder={"Search your library"} type={"search"}></input>
+            <ul className={classes.playlists}>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-                <li className="playlists_item">
-                    <div className="playlist"></div>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
                 </li>
-
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
+                <li className={classes.playlists_item}>
+                    <div className={classes.playlist}>
+                        <p className={classes.playlist_name}>Name</p>
+                        <p className={classes.playlist_count}>Song Count</p>
+                    </div>
+                </li>
             </ul>
 
         </div>

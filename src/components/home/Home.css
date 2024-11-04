@@ -10,18 +10,31 @@ h1 {
 
 .playlists {
     display: flex;
+    flex-direction: row;
     height: 300px;
     align-items: center;
     overflow: scroll;
 }
 
 .playlist {
+    background-color: rgba(28, 32, 43, 0.63);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #858585;
+}
+
+.playlists_item {
+    position: relative;
     margin-left: 50px;
-    background: #222935;
+    background-image: url("../../graphics/Default Playlist Photo.png");
+    background-size: cover;
     width: 250px;
     height: 250px;
     border-radius: 10px;
-}
+ }
 
 .songs_list {
     display: flex;

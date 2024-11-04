@@ -1,0 +1,69 @@
+:root {
+    --list-size: 225px;
+    --max-columns: 7;
+}
+
+@media (min-width: 2000px) {  :root { --max-columns: 8; }  }
+@media (max-width: 2000px) {  :root { --max-columns: 7; }  }
+@media (max-width: 1800px) {  :root { --max-columns: 6; }  }
+@media (max-width: 1600px) {  :root { --max-columns: 5; }  }
+@media (max-width: 1400px) {  :root { --max-columns: 4; }  }
+@media (max-width: 1150px) {  :root { --max-columns: 3; }  }
+@media (max-width: 900px) {  :root { --max-columns: 2; }  }
+@media (max-width: 650px) {  :root { --max-columns: 1; }  }
+
+
+.library {
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    padding: 20px 0 10px 20px;
+}
+
+.searchbar {
+    margin: 20px;
+    min-width: 200px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background-color: #222935;
+    color: white;
+    padding-left: 20px;
+}
+
+.searchbar:focus {
+    outline: 2px white;
+}
+
+.playlists {
+    display: grid;
+    grid-template-columns: repeat(var(--max-columns), 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-gap: 8px;
+}
+
+.playlists_item {
+    position: relative;
+    background-image: url("../../graphics/Default Playlist Photo.png");
+    background-size: cover;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: var(--list-size);
+    height: var(--list-size);
+}
+
+.playlist {
+    background-color: rgba(28, 32, 43, 0.63);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #858585;
+}
+
+.playlist_photo {
+}
