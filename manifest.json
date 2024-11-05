@@ -1,0 +1,6 @@
+{
+  "short_name": "ThunderBox",
+  "name": "ThunderBox",
+  "start_url": ".",
+  "display": "standalone"
+}
