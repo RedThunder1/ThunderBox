@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import './Playbar.css';
+import {cleanup} from "@testing-library/react";
 
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
@@ -140,6 +141,7 @@ function Playbar() {
 
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
+
         loadTrack(songIndex);
     }, [])
 

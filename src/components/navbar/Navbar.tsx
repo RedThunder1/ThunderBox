@@ -18,7 +18,7 @@ function Navbar() {
             </ul>
             <div className="settings">
                 <div className="account">
-                    <button className="account_button"><i className="icon-user"></i></button>
+                    <Link className="account_button" to="/login"><i className="icon-user"></i></Link>
                 </div>
                 <button className="settings_button"><i className="icon-settings"></i></button>
             </div>

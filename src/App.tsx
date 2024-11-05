@@ -5,6 +5,9 @@ import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
 import Playbar from './components/playbar/Playbar'
 import Library from './components/library/Library'
+import Login from './components/login/Login'
+import CreateAccount from "./components/login/CreateAccount";
+import ForgotPassword from "./components/login/ForgotPassword";
 
 function App() {
     return (
@@ -15,6 +18,9 @@ function App() {
               <Routes>
                   <Route path="/" element={<Home />}/>
                   <Route path="library" element={<Library />}/>
+                  <Route path="login" element={<Login />}/>
+                  <Route path="createaccount" element={<CreateAccount />}/>
+                  <Route path="forgotpassword" element={<ForgotPassword/>}/>
               </Routes>
           </main>
       </>
