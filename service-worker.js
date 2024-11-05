@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ThunderBox/precache-manifest.30c6bd056e0b5f1f8f228dfa77e82526.js"
+  "/ThunderBox/precache-manifest.04bc657df9cdd75fddad42cfab97c636.js"
 );
 
 self.addEventListener('message', (event) => {
