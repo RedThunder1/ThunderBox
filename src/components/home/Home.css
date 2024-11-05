@@ -3,6 +3,11 @@
     height: 100%;
 }
 
+.home > p {
+    color: rgba(255, 255, 255, 0.68);
+    padding: 10px;
+}
+
 h1 {
     font-size: 40px;
     padding: 20px 0 10px 20px;
@@ -31,7 +36,7 @@ h1 {
     margin-left: 50px;
     background-image: url("../../graphics/Default Playlist Photo.png");
     background-size: cover;
-    width: 250px;
+    min-width: 250px;
     height: 250px;
     border-radius: 10px;
  }

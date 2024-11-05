@@ -33,7 +33,7 @@ img {
 }
 .nav_link:hover {
     background-color: #141a25;
-    color: red;
+    color: #1987ff;
 }
 
 .settings {
@@ -76,9 +76,9 @@ img {
 }
 
 .account_button:hover {
-    color: red;
+    color: #1987ff;
 }
 
 .settings_button:hover {
-    color: red;
+    color: #1987ff;
 }

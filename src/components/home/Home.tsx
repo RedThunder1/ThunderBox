@@ -66,6 +66,7 @@ function Home() {
                 </li>
 
             </ul>
+            <p>Music is provided by https://freemusicarchive.org/home</p>
         </div>
     );
 }

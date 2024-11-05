@@ -16,11 +16,11 @@ function App() {
           <Playbar />
           <main>
               <Routes>
-                  <Route path="/" element={<Home />}/>
-                  <Route path="library" element={<Library />}/>
-                  <Route path="login" element={<Login />}/>
-                  <Route path="createaccount" element={<CreateAccount />}/>
-                  <Route path="forgotpassword" element={<ForgotPassword/>}/>
+                  <Route path="/ThunderBox" element={<Home />}/>
+                  <Route path="ThunderBox/library" element={<Library />}/>
+                  <Route path="ThunderBox/login" element={<Login />}/>
+                  <Route path="ThunderBox/createaccount" element={<CreateAccount />}/>
+                  <Route path="ThunderBox/forgotpassword" element={<ForgotPassword/>}/>
               </Routes>
           </main>
       </>

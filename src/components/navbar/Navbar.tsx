@@ -10,15 +10,15 @@ function Navbar() {
             <img src={Logo} alt="logo" />
             <ul className="nav_list">
                 <li className="nav_item">
-                    <Link className="nav_link" to={"/"}><i className="icon-home"></i>   Home</Link>
+                    <Link className="nav_link" to={"/ThunderBox"}><i className="icon-home"></i>   Home</Link>
                 </li>
                 <li className="nav_item">
-                    <Link className="nav_link" to={"/library"}><i className="icon-playlist"></i>   Library</Link>
+                    <Link className="nav_link" to={"ThunderBox/library"}><i className="icon-playlist"></i>   Library</Link>
                 </li>
             </ul>
             <div className="settings">
                 <div className="account">
-                    <Link className="account_button" to="/login"><i className="icon-user"></i></Link>
+                    <Link className="account_button" to="ThunderBox/login"><i className="icon-user"></i></Link>
                 </div>
                 <button className="settings_button"><i className="icon-settings"></i></button>
             </div>

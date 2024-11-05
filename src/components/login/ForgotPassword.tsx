@@ -12,7 +12,7 @@ function ForgotPassword() {
                 <h1>Forgot Password</h1>
                 <input type="Email" className="login_field" placeholder="Enter email to account"/>
                 <input type="submit" className="submit_button"/>
-                <Link to="/login" className="account_links">Back to Login</Link>
+                <Link to="/ThunderBox/login" className="account_links">Back to Login</Link>
             </form>
 
         </div>
