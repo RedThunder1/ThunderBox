@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
+import axios from 'axios'
 import './Playbar.css';
-import {cleanup} from "@testing-library/react";
 
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
@@ -16,26 +16,7 @@ let updateTimer: NodeJS.Timer;
 let songIndex: number = 0;
 let current_track = document.createElement("audio")
 
-let track_list = [
-    {
-        name: "Night Owl",
-        artist: "Broke For Free",
-        image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
-    },
-    {
-        name: "Enthusiast",
-        artist: "Tours",
-        image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3"
-    },
-    {
-        name: "Shipping Lanes",
-        artist: "Chad Crouch",
-        image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
-    },
-];
+let track_list: Array<{ name: string; artist: string; image: string; path: string}>;
 
 function loadTrack(track_index: number) {
     clearInterval(updateTimer);
@@ -88,6 +69,11 @@ function nextTrack() {
 }
 
 function prevTrack() {
+    if (current_track.currentTime > 5) {
+        current_track.currentTime = 0;
+        resetValues()
+        return;
+    }
     if (songIndex > 0)
         songIndex -= 1;
     else songIndex = track_list.length - 1;
@@ -107,7 +93,6 @@ function seekUpdate() {
     if (playtime_slider.max !== current_track.duration.toString()) {
         playtime_slider.max = current_track.duration.toString();
     }
-
 
     let seekPosition = 0;
 
@@ -131,6 +116,18 @@ function seekUpdate() {
     }
 }
 
+async function loadSongs() {
+    const home_songs = document.getElementById('home_songs')!;
+    axios.get("http://localhost:8000/api/songs")
+    .then(function(res) {
+        res.data.forEach((song: any) => {
+            console.log(song);
+            home_songs.innerHTML += '<li class="songs_item" style="background-image: url(' + song.image + ')"><div class="song"><p class="song_title">' + song.name + '</p><p class="song_author">' + song.artist + '</p></div></li>'
+        })
+    })
+
+}
+
 function Playbar() {
     useEffect(() => {
         song_name = document.getElementById('song_name') as HTMLParagraphElement;
@@ -141,8 +138,8 @@ function Playbar() {
 
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
-
-        loadTrack(songIndex);
+        resetValues();
+        loadSongs()
     }, [])
 
     return (
@@ -172,8 +169,8 @@ function Playbar() {
 
             <div className="song_info">
                 <img className="song_photo" id="song_photo" alt="song_photo"></img>
-                <p className="song_name" id="song_name">Name</p>
-                <p className="song_author" id="song_author">Author</p>
+                <p className="song_name" id="song_name"></p>
+                <p className="song_author" id="song_author"></p>
             </div>
             <div className="volume_controls">
                 <input type="range" min="1" max="100" className="volume" id="volume" onChange={setVolume}/>
