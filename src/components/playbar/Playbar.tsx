@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
-import axios from 'axios'
 import './Playbar.css';
 
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
 let song_photo: HTMLImageElement;
-
 let playtime_slider: HTMLInputElement;
 let volume_slider: HTMLInputElement;
 let current_playtime: HTMLDivElement;
@@ -16,18 +14,33 @@ let updateTimer: NodeJS.Timer;
 let songIndex: number = 0;
 let current_track = document.createElement("audio")
 
-let track_list: Array<{ name: string; artist: string; image: string; path: string}>;
+let queue: Array<{ name: string; artist: string; image: string; path: string}> = [];
+
+export function addTrack(name: string) {
+    let song_data = JSON.parse(sessionStorage.getItem('songs') as string)
+    let song: Array<{ name: string; artist: string; image: string; path: string}>;
+    song_data.forEach((item: any) => {
+        if (item.name === name) {
+            // @ts-ignore
+            song = {name: item.name, artist: item.artist, image: item.image, path: item.path}
+        }
+    })
+    //IDK why these are errors given it works, I'll figure it out later ¯\_(ツ)_/¯
+    // @ts-ignore
+    queue[0] = song
+    nextTrack()
+}
 
 function loadTrack(track_index: number) {
     clearInterval(updateTimer);
     resetValues();
-    current_track.src = track_list[track_index].path;
+    current_track.src = queue[track_index].path;
     current_track.load()
 
     try {
-        song_photo.src = track_list[track_index].image
-        song_name.textContent = track_list[track_index].name;
-        song_author.textContent = track_list[track_index].artist;
+        song_photo.src = queue[track_index].image
+        song_name.textContent = queue[track_index].name;
+        song_author.textContent = queue[track_index].artist;
     } catch (e) { console.log(e) }
 
 
@@ -61,7 +74,7 @@ function pauseTrack () {
 }
 
 function nextTrack() {
-    if (songIndex < track_list.length - 1)
+    if (songIndex < queue.length - 1)
         songIndex += 1;
     else songIndex = 0;
     loadTrack(songIndex);
@@ -76,7 +89,7 @@ function prevTrack() {
     }
     if (songIndex > 0)
         songIndex -= 1;
-    else songIndex = track_list.length - 1;
+    else songIndex = queue.length - 1;
     loadTrack(songIndex);
     playTrack();
 }
@@ -116,18 +129,6 @@ function seekUpdate() {
     }
 }
 
-async function loadSongs() {
-    const home_songs = document.getElementById('home_songs')!;
-    axios.get("http://localhost:8000/api/songs")
-    .then(function(res) {
-        res.data.forEach((song: any) => {
-            console.log(song);
-            home_songs.innerHTML += '<li class="songs_item" style="background-image: url(' + song.image + ')"><div class="song"><p class="song_title">' + song.name + '</p><p class="song_author">' + song.artist + '</p></div></li>'
-        })
-    })
-
-}
-
 function Playbar() {
     useEffect(() => {
         song_name = document.getElementById('song_name') as HTMLParagraphElement;
@@ -138,10 +139,9 @@ function Playbar() {
 
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
-        resetValues();
-        loadSongs()
-    }, [])
 
+        resetValues();
+    }, []);
     return (
         <div className="playbar">
             <ul className="song_controls">

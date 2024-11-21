@@ -30,13 +30,13 @@ h1 {
 }
 
 .playlist {
-    background-color: rgba(28, 32, 43, 0.63);
+    background-color: rgba(28, 32, 43, 0.75);
     border-radius: 0 0 10px 10px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    color: #858585;
+    color: #dddddd;
 }
 
 .playlists_item {
@@ -66,11 +66,17 @@ h1 {
 }
 
 .song {
-    background-color: rgba(28, 32, 43, 0.63);
+    background-color: rgba(28, 32, 43, 0.75);
     border-radius: 0 0 10px 10px;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    color: #858585;
+    width: 245px;
+    color: #dddddd;
+    padding-left: 5px;
+}
+
+.song__author {
+    padding-left: 5px;
+    font-size: 13px;
 }
