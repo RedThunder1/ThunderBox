@@ -1,6 +1,5 @@
-# ThunderBox
-
-ThunderBox is a small project of mine where I plan to create a web song player.
+# <div align="center"><img src="public/ThunderBox.png" alt="Logo" style="vertical-align: bottom; width: 70px; height: 70px;">ThunderBox</div>
+ThunderBox is a small project of mine where I plan to create a web music player.
 
 # Status
 

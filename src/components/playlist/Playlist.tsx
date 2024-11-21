@@ -1,7 +1,9 @@
 import React from 'react'
 import './Playlist.css'
+import {useLocation} from "react-router-dom";
 
-//const data = useLocation()
+//const location = useLocation()
+//const data = location
 
 function Playlist() {
     return (
