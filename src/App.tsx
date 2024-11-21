@@ -8,6 +8,7 @@ import Library from './components/library/Library'
 import Login from './components/login/Login'
 import CreateAccount from "./components/login/CreateAccount";
 import ForgotPassword from "./components/login/ForgotPassword";
+import Playlist from './components/playlist/Playlist';
 import {loadSongs, loadPlaylists} from './components/Scripts/LoadItems';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
               <Routes>
                   <Route path="/ThunderBox" element={<Home />}/>
                   <Route path="ThunderBox/library" element={<Library />}/>
+                  <Route path="ThunderBox/playlist" element={<Playlist />}/>
                   <Route path="ThunderBox/login" element={<Login />}/>
                   <Route path="ThunderBox/createaccount" element={<CreateAccount />}/>
                   <Route path="ThunderBox/forgotpassword" element={<ForgotPassword/>}/>

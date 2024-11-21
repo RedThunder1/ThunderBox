@@ -59,6 +59,9 @@ function resetValues() {
 }
 
 function playpauseTrack() {
+    if (queue.length < 1) {
+        return
+    }
     if (!playing) playTrack();
     else pauseTrack();
 }
@@ -74,6 +77,9 @@ function pauseTrack () {
 }
 
 function nextTrack() {
+    if (queue.length < 1) {
+        return
+    }
     if (songIndex < queue.length - 1)
         songIndex += 1;
     else songIndex = 0;
@@ -82,6 +88,9 @@ function nextTrack() {
 }
 
 function prevTrack() {
+    if (queue.length < 1) {
+        return
+    }
     if (current_track.currentTime > 5) {
         current_track.currentTime = 0;
         resetValues()

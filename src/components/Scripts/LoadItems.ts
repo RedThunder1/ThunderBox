@@ -1,5 +1,4 @@
 import axios from "axios";
-import Playbar from "../playbar/Playbar";
 
 export function loadSongs() {
     axios.get("http://localhost:8000/api/songs")

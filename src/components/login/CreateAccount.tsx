@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from "react-router-dom";
 
 function handleSubmit() {
 
@@ -15,7 +14,7 @@ function CreateAccount() {
                 <input type="password" className="login_field" placeholder="Password"/>
                 <p>Confirm Password</p>
                 <input type="password" className="login_field" placeholder="Confirm Password"/>
-                <input className="submit_button" type="submit"/>
+                <input className="submit_button" type="submit" value="Create Account"/>
             </form>
         </div>
     );
