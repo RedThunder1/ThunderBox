@@ -8,6 +8,21 @@
     padding: 10px;
 }
 
+.searchbar {
+    margin: 10px;
+    width: 300px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background-color: #222935;
+    color: white;
+    padding-left: 20px;
+}
+
+.searchbar:focus {
+    outline: #1987ff solid 1px;
+}
+
 .archive_link {
     color: #1c5aa8;
 }
@@ -74,9 +89,4 @@ h1 {
     width: 245px;
     color: #dddddd;
     padding-left: 5px;
-}
-
-.song__author {
-    padding-left: 5px;
-    font-size: 13px;
 }

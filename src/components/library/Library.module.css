@@ -24,8 +24,8 @@ h1 {
 }
 
 .searchbar {
-    margin: 20px;
-    min-width: 200px;
+    margin: 10px;
+    width: 300px;
     height: 45px;
     border-radius: 10px;
     border: none;
@@ -67,6 +67,4 @@ h1 {
 
 .playlist > p {
     margin-left: 5px;
-}
-.playlist_photo {
 }

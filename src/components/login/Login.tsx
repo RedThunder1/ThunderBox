@@ -14,7 +14,7 @@ function Login() {
                 <input type="email" className="login_field" placeholder="Email Address"/>
                 <input type="password" className="login_field" placeholder="Password"/>
                 <label className="checkbox_label"><input type="checkbox" className="checkbox"/> Stay logged in</label>
-                <input className="submit_button" type="submit"/>
+                <input className="submit_button" type="submit" value="Login"/>
                 <Link to="/ThunderBox/createaccount" className="account_links">Create Account</Link>
                 <Link to="/ThunderBox/forgotpassword" className="account_links">Forgot Password</Link>
             </form>
