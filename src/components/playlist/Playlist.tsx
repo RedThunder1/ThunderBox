@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Playlist.css'
-import {useLocation} from "react-router-dom";
 
-//const location = useLocation()
-//const data = location
+let playlist: string;
+
+export function setPlaylist(name: string) {
+    playlist = name;
+}
 
 function Playlist() {
+    useEffect(() => {
+        let container = document.getElementById('playlist_screen')!;
+        container.innerHTML = playlist;
+    }, []);
     return (
-        <div className="playlist_screen">
+        <div className="playlist_screen" id="playlist_screen">
 
         </div>
     );
