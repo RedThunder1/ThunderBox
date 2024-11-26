@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import './Playbar.css';
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
@@ -12,12 +14,14 @@ let total_playtime: HTMLDivElement;
 let playing: boolean = false;
 let updateTimer: NodeJS.Timer;
 let songIndex: number = 0;
+
+let song_data = JSON.parse(sessionStorage.getItem('songs') as string)
+
 let current_track = document.createElement("audio")
 
 let queue: Array<{ name: string; artist: string; image: string; path: string}> = [];
 
-export function addTrack(name: string) {
-    let song_data = JSON.parse(sessionStorage.getItem('songs') as string)
+export function setTrack(name: string) {
     let song: Array<{ name: string; artist: string; image: string; path: string}>;
     song_data.forEach((item: any) => {
         if (item.name === name) {
@@ -29,6 +33,25 @@ export function addTrack(name: string) {
     // @ts-ignore
     queue[0] = song
     nextTrack()
+}
+
+export function addTrack(name: string) {
+    let song: Array<{ name: string; artist: string; image: string; path: string}>;
+    song_data.forEach((item: any) => {
+        if (item.name === name) {
+            // @ts-ignore
+            song = {name: item.name, artist: item.artist, image: item.image, path: item.path}
+        }
+    })
+    //IDK why these are errors given it works, I'll figure it out later ¯\_(ツ)_/¯
+    // @ts-ignore
+    queue.push(song)
+}
+
+export function setQueue(songs: Array<{ name: string; artist: string; image: string; path: string }>) {
+    queue = songs;
+    loadTrack(songIndex)
+    playTrack()
 }
 
 function loadTrack(track_index: number) {
@@ -67,7 +90,10 @@ function playpauseTrack() {
 }
 
 function playTrack() {
-    current_track.play();
+    current_track.play()
+        .catch((e) => {
+            console.log('Error while playing track!', e);
+        });
     playing = true;
 }
 
@@ -180,6 +206,10 @@ function Playbar() {
                 <img className="song_photo" id="song_photo" alt="song_photo"></img>
                 <p className="song_name" id="song_name"></p>
                 <p className="song_author" id="song_author"></p>
+            </div>
+            <div className="tools closed">
+                <span className="icon-heart"/>
+                <span className="icon-options-vertical"/>
             </div>
             <div className="volume_controls">
                 <input type="range" min="1" max="100" className="volume" id="volume" onChange={setVolume}/>

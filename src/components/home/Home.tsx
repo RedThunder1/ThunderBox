@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import './Home.css'
 import {useNavigate} from 'react-router-dom';
-import {addTrack} from "../playbar/Playbar";
-import {setPlaylist} from "../playlist/Playlist";
+import {setTrack} from "../playbar/Playbar";
 import ReactDOM from "react-dom/client";
 
 async function loadSongs() {
@@ -35,7 +34,6 @@ async function loadSongs() {
 }
 
 async function loadPlaylists() {
-    console.log("loaded playlists")
     let root = ReactDOM.createRoot(document.getElementById('home_playlists')!);
     try {
         let playlist_data: any = JSON.parse(sessionStorage.getItem('playlists') as string)
@@ -71,13 +69,13 @@ async function loadPlaylists() {
 function Home() {
     const navigate = useNavigate();
     useEffect(() => {
+
+        //Issue with adding event listeners. After going back to the page they don't seem to work and require the page to be refreshed.
         loadSongs().then(() => {
             let songs = document.getElementsByClassName('songs_item');
             for (let i = 0; i < songs.length; i++) {
-                console.log(songs[i]);
                 songs[i].addEventListener('click', () => {
-                    console.log('clicked');
-                    addTrack(songs[i].id)
+                    setTrack(songs[i].id)
                 })
             }
         });
@@ -85,9 +83,9 @@ function Home() {
         loadPlaylists().then(() => {
             let playlists = document.getElementsByClassName('playlists_item');
             for (let i = 0; i < playlists.length; i++) {
-                console.log(playlists[i]);
-                playlists[i].addEventListener('click', () => {
-                    setPlaylist(playlists[i].id)
+                let playlist = playlists[i];
+                playlist.addEventListener('click', () => {
+                    sessionStorage.setItem('active_playlist', JSON.stringify(playlist.id));
                     navigate("/ThunderBox/playlist")
                 })
             }

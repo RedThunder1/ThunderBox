@@ -114,9 +114,35 @@
     padding-left: 10px;
 }
 
+.tools {
+    position: absolute;
+    left: calc(50% + 100px);
+    top: 20px;
+    width: fit-content;
+    color: white;
+    font-size: 35px;
+}
+
+.tools span {
+    margin: 5px;
+}
+
+.icon-heart:hover {
+    color: red;
+}
+
+.icon-options-vertical:hover {
+    color: #1987ff;
+}
+
+.closed {
+    opacity: 0;
+}
+
 .volume_controls {
     position: absolute;
     right: 20px;
+    top: 35%;
 }
 
 .volume_controls > i {
