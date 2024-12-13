@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function loadSongs() {
+export function fetchSongs() {
     try {
         axios.get("http://localhost:8000/api/songs")
             .then(function(res) {
@@ -11,7 +11,7 @@ export function loadSongs() {
     }
 }
 
-export function loadPlaylists() {
+export function fetchPlaylists() {
     try {
         axios.get("http://localhost:8000/api/playlists")
             .then(function(res) {

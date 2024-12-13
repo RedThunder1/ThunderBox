@@ -8,7 +8,7 @@ i {
   transition: color 150ms;
 }
 
-.root {
+#root {
   width: 100vw;
 }
 

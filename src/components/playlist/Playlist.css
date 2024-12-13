@@ -42,7 +42,7 @@
     padding: 3px;
     border-radius: 5px;
     color: white;
-    transition: transform 300ms ease;
+    transition: all 300ms ease-in-out;
 }
 
 .playlist_song:hover {

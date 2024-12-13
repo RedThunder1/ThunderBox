@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import './Home.css'
-import {useNavigate} from 'react-router-dom';
+import {NavigateFunction, useNavigate} from 'react-router-dom';
 import {setTrack} from "../playbar/Playbar";
 import ReactDOM from "react-dom/client";
 
-async function loadSongs() {
+function loadSongs() {
     let root = ReactDOM.createRoot(document.getElementById('home_songs')!);
     try {
         let song_data = JSON.parse(sessionStorage.getItem('songs') as string)
@@ -15,7 +15,7 @@ async function loadSongs() {
             };
             song_array.push(
 
-                <li className={"songs_item"} id={song.name} style={styling}>
+                <li className={"songs_item"} id={song.name} style={styling} onClick={() => {setTrack(song.name)}}>
                     <div className="song">
                         <p className="song_title">{song.name}</p>
                         <p className="song_author">{song.artist}</p>
@@ -33,7 +33,7 @@ async function loadSongs() {
     }
 }
 
-async function loadPlaylists() {
+function loadPlaylists(nav: NavigateFunction) {
     let root = ReactDOM.createRoot(document.getElementById('home_playlists')!);
     try {
         let playlist_data: any = JSON.parse(sessionStorage.getItem('playlists') as string)
@@ -47,10 +47,13 @@ async function loadPlaylists() {
                 backgroundImage: `url(${image})`,
             }
             playlist_array.push(
-                <li className="playlists_item" style={styling} id={playlist.name}>
+                <li className="playlists_item" style={styling} id={playlist.name} onClick={() => {
+                    sessionStorage.setItem('active_playlist', JSON.stringify(playlist.name))
+                    nav("/ThunderBox/playlist")
+                }}>
                     <div className="playlist">
                         <p className="playlist_name">{playlist.name}</p>
-                        <p className="playlist_count">{playlist.songs.length}</p>
+                        <p className="playlist_count">{playlist.songs.length + " Songs"}</p>
                     </div>
                 </li>
             )
@@ -63,33 +66,22 @@ async function loadPlaylists() {
         root.render(<h4 style={styling}>Cannot find Playlists! Please try reloading!</h4>)
         console.log('Failed to get playlist data.')
     }
-
 }
 
 function Home() {
     const navigate = useNavigate();
     useEffect(() => {
-
-        //Issue with adding event listeners. After going back to the page they don't seem to work and require the page to be refreshed.
-        loadSongs().then(() => {
-            let songs = document.getElementsByClassName('songs_item');
-            for (let i = 0; i < songs.length; i++) {
-                songs[i].addEventListener('click', () => {
-                    setTrack(songs[i].id)
-                })
+        //Stop this from running forever if it cant fetch data.
+        let iterations = 0
+        let checkData = setInterval(() => {
+            console.log("running")
+            if (sessionStorage.getItem('songs') !== null || iterations > 10) {
+                loadSongs()
+                loadPlaylists(navigate)
+                clearInterval(checkData)
             }
-        });
-
-        loadPlaylists().then(() => {
-            let playlists = document.getElementsByClassName('playlists_item');
-            for (let i = 0; i < playlists.length; i++) {
-                let playlist = playlists[i];
-                playlist.addEventListener('click', () => {
-                    sessionStorage.setItem('active_playlist', JSON.stringify(playlist.id));
-                    navigate("/ThunderBox/playlist")
-                })
-            }
-        });
+            iterations++;
+        }, 100)
     })
 
     return (

@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import './Playbar.css';
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 
 let song_name: HTMLParagraphElement;
 let song_author: HTMLParagraphElement;
@@ -94,11 +92,21 @@ function playTrack() {
         .catch((e) => {
             console.log('Error while playing track!', e);
         });
+    let button = document.getElementById("play_pause_button")!;
+    if (!button.classList.contains('icon-control-play')) {
+        button.classList.remove('icon-control-pause');
+        button.classList.add('icon-control-play');
+    }
     playing = true;
 }
 
 function pauseTrack () {
     current_track.pause();
+    let button = document.getElementById("play_pause_button")!;
+    if (!button.classList.contains('icon-control-pause')) {
+        button.classList.remove('icon-control-play');
+        button.classList.add('icon-control-pause');
+    }
     playing = false;
 }
 
@@ -135,6 +143,17 @@ function seekTo() {
 
 function setVolume() {
     current_track.volume = volume_slider.valueAsNumber / 100;
+    let volume_icon = document.getElementById("volume_icon")!;
+    volume_icon.classList.forEach((item) => {
+        volume_icon.classList.remove(item);
+    })
+    if (volume_slider.valueAsNumber === 0) {
+        volume_icon.classList.add('icon-volume-off');
+    } else if (volume_slider.valueAsNumber > 0 && volume_slider.valueAsNumber < 50) {
+        volume_icon.classList.add('icon-volume-1');
+    } else {
+        volume_icon.classList.add('icon-volume-2');
+    }
 }
 
 function seekUpdate() {
@@ -186,7 +205,7 @@ function Playbar() {
                 </li>
                 <li className="song_control">
                     <button className="control" onClick={playpauseTrack} id="play_control"><i
-                        className="icon-control-play"></i></button>
+                        className="icon-control-play" id="play_pause_button"></i></button>
                 </li>
                 <li className="song_control">
                     <button className="control" onClick={nextTrack} id="end_control"><i
@@ -212,8 +231,8 @@ function Playbar() {
                 <span className="icon-options-vertical"/>
             </div>
             <div className="volume_controls">
-                <input type="range" min="1" max="100" className="volume" id="volume" onChange={setVolume}/>
-                <i className="icon-volume-2"></i>
+                <input type="range" min="0" max="100" className="volume" id="volume" onChange={setVolume}/>
+                <i className="icon-volume-2" id="volume_icon"></i>
             </div>
         </div>
     );

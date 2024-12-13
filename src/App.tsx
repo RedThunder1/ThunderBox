@@ -9,11 +9,8 @@ import Login from './components/login/Login'
 import CreateAccount from "./components/login/CreateAccount";
 import ForgotPassword from "./components/login/ForgotPassword";
 import Playlist from './components/playlist/Playlist';
-import {loadSongs, loadPlaylists} from './components/Scripts/LoadItems';
 
 function App() {
-    loadSongs()
-    loadPlaylists()
     return (
       <>
           <Navbar/>
