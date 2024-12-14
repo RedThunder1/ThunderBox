@@ -13,11 +13,16 @@ let playing: boolean = false;
 let updateTimer: NodeJS.Timer;
 let songIndex: number = 0;
 
-let song_data = JSON.parse(sessionStorage.getItem('songs') as string)
+let song_data: any
 
 let current_track = document.createElement("audio")
+let tools: HTMLElement
 
 let queue: Array<{ name: string; artist: string; image: string; path: string}> = [];
+
+export function setSongData() {
+    song_data = JSON.parse(sessionStorage.getItem('songs') as string)
+}
 
 export function setTrack(name: string) {
     let song: Array<{ name: string; artist: string; image: string; path: string}>;
@@ -50,6 +55,16 @@ export function setQueue(songs: Array<{ name: string; artist: string; image: str
     queue = songs;
     loadTrack(songIndex)
     playTrack()
+    if (tools.classList.contains('closed')) {
+        tools.classList.toggle('closed');
+    }
+}
+
+export function clearQueue() {
+    queue = []
+    if (!tools.classList.contains('closed')) {
+        tools.classList.toggle('closed');
+    }
 }
 
 function loadTrack(track_index: number) {
@@ -98,6 +113,14 @@ function playTrack() {
         button.classList.add('icon-control-play');
     }
     playing = true;
+}
+
+export function playTrackInQueue(i: number) {
+    if (queue.length > 0) {
+        songIndex = i
+        loadTrack(songIndex)
+        playTrack()
+    }
 }
 
 function pauseTrack () {
@@ -193,7 +216,7 @@ function Playbar() {
 
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
-
+        tools = document.getElementById("tools")!;
         resetValues();
     }, []);
     return (
@@ -226,7 +249,7 @@ function Playbar() {
                 <p className="song_name" id="song_name"></p>
                 <p className="song_author" id="song_author"></p>
             </div>
-            <div className="tools closed">
+            <div className="tools closed" id="tools">
                 <span className="icon-heart"/>
                 <span className="icon-options-vertical"/>
             </div>

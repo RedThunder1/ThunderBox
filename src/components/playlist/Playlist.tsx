@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import './Playlist.css'
 import ReactDOM from "react-dom/client";
-import {addTrack, setQueue} from "../playbar/Playbar";
+import {playTrackInQueue, setQueue} from "../playbar/Playbar";
 
 let active_playlist: any;
 let track_list: any = []
@@ -17,10 +17,14 @@ function getPlaylist() {
     document.getElementById('title')!.innerText = active_playlist.name
     let root = ReactDOM.createRoot(document.getElementById('songs')!);
     let songs: any = [];
-    active_playlist.songs.forEach((song: any) => {
+    //Using index in foreach loop doesn't work for some reason
+    active_playlist.songs.forEach((song: any, index: number) => {
         track_list.push(song)
         songs.push(
-            <div className="playlist_song">
+            <div className="playlist_song" onClick={() => {
+                loadPlaylist()
+                playTrackInQueue(index)
+            }}>
                 <img className="song-image" src={song.image} alt="song image" />
                 <div className="song-info">
                     <p className="song-name">{song.name}</p>

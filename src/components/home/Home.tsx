@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './Home.css'
 import {NavigateFunction, useNavigate} from 'react-router-dom';
-import {setTrack} from "../playbar/Playbar";
+import {setSongData, setTrack} from "../playbar/Playbar";
 import ReactDOM from "react-dom/client";
 
 function loadSongs() {
@@ -14,7 +14,6 @@ function loadSongs() {
                 backgroundImage: `url(${song.image})`,
             };
             song_array.push(
-
                 <li className={"songs_item"} id={song.name} style={styling} onClick={() => {setTrack(song.name)}}>
                     <div className="song">
                         <p className="song_title">{song.name}</p>
@@ -23,6 +22,7 @@ function loadSongs() {
                 </li>
             )
         })
+        setSongData()
         root.render(song_array)
     } catch (e) {
         const styling = {
@@ -53,7 +53,7 @@ function loadPlaylists(nav: NavigateFunction) {
                 }}>
                     <div className="playlist">
                         <p className="playlist_name">{playlist.name}</p>
-                        <p className="playlist_count">{playlist.songs.length + " Songs"}</p>
+                        <p className="playlist_count">{playlist.songs.length} Songs</p>
                     </div>
                 </li>
             )
@@ -74,7 +74,6 @@ function Home() {
         //Stop this from running forever if it cant fetch data.
         let iterations = 0
         let checkData = setInterval(() => {
-            console.log("running")
             if (sessionStorage.getItem('songs') !== null || iterations > 10) {
                 loadSongs()
                 loadPlaylists(navigate)
