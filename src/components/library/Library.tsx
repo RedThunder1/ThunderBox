@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import classes from './Library.module.css'
-import {NavigateFunction, useNavigate, useNavigation} from "react-router-dom";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 import ReactDOM from "react-dom/client";
 
 function loadPlaylists(nav: NavigateFunction) {

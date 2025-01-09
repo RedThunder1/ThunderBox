@@ -3,6 +3,8 @@ import './Home.css'
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import {setSongData, setTrack} from "../playbar/Playbar";
 import ReactDOM from "react-dom/client";
+import {Simulate} from "react-dom/test-utils";
+import submit = Simulate.submit;
 
 function loadSongs() {
     let root = ReactDOM.createRoot(document.getElementById('home_songs')!);
@@ -68,13 +70,19 @@ function loadPlaylists(nav: NavigateFunction) {
     }
 }
 
+function keyPressEvent(e: any, nav: NavigateFunction) {
+    if (e.key == 'Enter') {
+        nav("/ThunderBox/search")
+    }
+}
+
 function Home() {
     const navigate = useNavigate();
     useEffect(() => {
         //Stop this from running forever if it cant fetch data.
         let iterations = 0
         let checkData = setInterval(() => {
-            if (sessionStorage.getItem('songs') !== null || iterations > 10) {
+            if (sessionStorage.getItem('songs') !== null || iterations > 20) {
                 loadSongs()
                 loadPlaylists(navigate)
                 clearInterval(checkData)
@@ -85,7 +93,7 @@ function Home() {
 
     return (
         <div className="home">
-            <input type={"text"} placeholder={"Search Songs"} className="searchbar" />
+            <input type={"text"} placeholder={"Search Songs"} className="searchbar" onKeyDown={(event) => {keyPressEvent(event, navigate)}} />
             <h1>Playlists</h1>
             <ul className="playlists" id="home_playlists"></ul>
             <h1>Songs</h1>

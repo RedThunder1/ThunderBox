@@ -17,7 +17,6 @@ function getPlaylist() {
     document.getElementById('title')!.innerText = active_playlist.name
     let root = ReactDOM.createRoot(document.getElementById('songs')!);
     let songs: any = [];
-    //Using index in foreach loop doesn't work for some reason
     active_playlist.songs.forEach((song: any, index: number) => {
         track_list.push(song)
         songs.push(

@@ -18,7 +18,7 @@ let song_data: any
 let current_track = document.createElement("audio")
 let tools: HTMLElement
 
-let queue: Array<{ name: string; artist: string; image: string; path: string}> = [];
+let queue: { name: string; artist: string; image: string; path: string}[] = [];
 
 export function setSongData() {
     song_data = JSON.parse(sessionStorage.getItem('songs') as string)
@@ -55,9 +55,6 @@ export function setQueue(songs: Array<{ name: string; artist: string; image: str
     queue = songs;
     loadTrack(songIndex)
     playTrack()
-    if (tools.classList.contains('closed')) {
-        tools.classList.toggle('closed');
-    }
 }
 
 export function clearQueue() {
@@ -65,23 +62,30 @@ export function clearQueue() {
     if (!tools.classList.contains('closed')) {
         tools.classList.toggle('closed');
     }
+    current_track.srcObject = null
 }
 
 function loadTrack(track_index: number) {
     clearInterval(updateTimer);
     resetValues();
-    current_track.src = queue[track_index].path;
-    current_track.load()
-
     try {
-        song_photo.src = queue[track_index].image
-        song_name.textContent = queue[track_index].name;
-        song_author.textContent = queue[track_index].artist;
-    } catch (e) { console.log(e) }
+        current_track.src = queue[track_index].path;
+        current_track.load()
+    } catch (e) {
+        console.log(e);
+    }
+
+    song_photo.src = queue[track_index].image
+    song_name.textContent = queue[track_index].name;
+    song_author.textContent = queue[track_index].artist;
 
 
     updateTimer = setInterval(seekUpdate, 1000);
     current_track.addEventListener("ended", nextTrack);
+
+    if (tools.classList.contains('closed')) {
+        tools.classList.toggle('closed');
+    }
 }
 
 function resetValues() {
@@ -103,10 +107,10 @@ function playpauseTrack() {
 }
 
 function playTrack() {
+    //Without catch throws DOMException: "The fetching process for the media resource was aborted by the user agent at the user's request."
+    //Unsure why this happens since the media is still loaded ¯\_(ツ)_/¯
     current_track.play()
-        .catch((e) => {
-            console.log('Error while playing track!', e);
-        });
+        .catch();
     let button = document.getElementById("play_pause_button")!;
     if (!button.classList.contains('icon-control-play')) {
         button.classList.remove('icon-control-pause');
@@ -206,6 +210,16 @@ function seekUpdate() {
     }
 }
 
+function resetInfo() {
+    song_photo.src = ""
+    song_name.innerText = "";
+    song_author.innerText = "";
+
+    clearInterval(updateTimer)
+    clearQueue()
+    resetValues()
+}
+
 function Playbar() {
     useEffect(() => {
         song_name = document.getElementById('song_name') as HTMLParagraphElement;
@@ -218,7 +232,7 @@ function Playbar() {
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
         tools = document.getElementById("tools")!;
         resetValues();
-    }, []);
+    });
     return (
         <div className="playbar">
             <ul className="song_controls">
@@ -251,7 +265,11 @@ function Playbar() {
             </div>
             <div className="tools closed" id="tools">
                 <span className="icon-heart"/>
-                <span className="icon-options-vertical"/>
+                <span className="icon-options-vertical" onClick={() => {document.getElementById("tool_menu")!.classList.toggle("closed")}}>
+                    <div className="tool_menu closed" id="tool_menu">
+                        <button className="clear_queue_button" onClick={resetInfo}>Clear Queue</button>
+                    </div>
+                </span>
             </div>
             <div className="volume_controls">
                 <input type="range" min="0" max="100" className="volume" id="volume" onChange={setVolume}/>

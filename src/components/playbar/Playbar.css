@@ -124,7 +124,33 @@
 }
 
 .tools span {
+    transition: color 200ms ease-in-out;
     margin: 5px;
+}
+
+.tool_menu {
+    position: absolute;
+    top: -100px;
+    right: -25px;
+    border-radius: 5px;
+    height: 100px;
+    width: 100px;
+    background-color: #16181d;
+}
+
+.clear_queue_button {
+    position: relative;
+    left: 5px;
+    width: 90px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0a0d13;
+    color: white;
+    transition: background-color 200ms ease-in-out;
+}
+
+.clear_queue_button:hover {
+    background-color: #0b223e;
 }
 
 .icon-heart:hover {
@@ -136,7 +162,7 @@
 }
 
 .closed {
-    opacity: 0;
+    visibility: hidden;
 }
 
 .volume_controls {

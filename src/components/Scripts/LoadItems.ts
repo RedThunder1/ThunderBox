@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function fetchSongs() {
     try {
-        axios.get("http://localhost:8000/api/songs")
+        axios.get("https://thunderbox-backend.onrender.com/api/songs")
             .then(function(res) {
                 sessionStorage.setItem("songs", JSON.stringify(res.data));
             })
@@ -13,7 +13,7 @@ export function fetchSongs() {
 
 export function fetchPlaylists() {
     try {
-        axios.get("http://localhost:8000/api/playlists")
+        axios.get("https://thunderbox-backend.onrender.com/api/playlists")
             .then(function(res) {
                 sessionStorage.setItem("playlists", JSON.stringify(res.data));
             })

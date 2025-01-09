@@ -1,0 +1,22 @@
+.search {
+
+}
+
+.search_results {
+    display: flex;
+}
+
+.results {
+    background-color: #20263e;
+    width: 80%;
+    height: 100px;
+    margin: 10px 0 0 10px;
+}
+
+.filters {
+    background-color: #20263e;
+    width: 20%;
+    height: 100px;
+    margin: 10px 0 0 10px;
+    border-radius: 5px 0 0 5px;
+}
