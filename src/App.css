@@ -4,7 +4,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #11131e;
+    background-color: var(--primary-color);
     display: block;
     overflow: scroll;
 }

@@ -29,13 +29,13 @@ h1 {
     height: 45px;
     border-radius: 10px;
     border: none;
-    background-color: #222935;
-    color: white;
+    background-color: var(--quaternary-color);
+    color: var(--text-color);
     padding-left: 20px;
 }
 
 .searchbar:focus {
-    outline: #1987ff solid 1px;
+    outline: var(--accent-color) solid 1px;
 }
 
 .playlists {
@@ -67,7 +67,7 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
-    color: #858585;
+    color: var(--text-color);
 }
 
 .playlist > p {

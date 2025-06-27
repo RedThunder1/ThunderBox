@@ -4,7 +4,7 @@ import {NavigateFunction, useNavigate} from 'react-router-dom';
 import {setSongData, setTrack} from "../playbar/Playbar";
 import ReactDOM from "react-dom/client";
 import {Simulate} from "react-dom/test-utils";
-import submit = Simulate.submit;
+import {InitTheme} from "../settings/Settings"
 
 function loadSongs() {
     let root = ReactDOM.createRoot(document.getElementById('home_songs')!);
@@ -78,6 +78,7 @@ function keyPressEvent(e: any, nav: NavigateFunction) {
 
 function Home() {
     const navigate = useNavigate();
+    InitTheme()
     useEffect(() => {
         //Stop this from running forever if it cant fetch data.
         let iterations = 0

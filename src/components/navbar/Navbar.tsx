@@ -20,7 +20,9 @@ function Navbar() {
                 <div className="account">
                     <Link className="account_button" to="ThunderBox/login"><i className="icon-user"></i></Link>
                 </div>
-                <button className="settings_button"><i className="icon-settings"></i></button>
+                <div className="settings_menu">
+                    <Link className="settings_button" to="ThunderBox/settings"><i className="icon-settings"></i></Link>
+                </div>
             </div>
         </div>
     );

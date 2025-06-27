@@ -12,6 +12,7 @@ let total_playtime: HTMLDivElement;
 let playing: boolean = false;
 let updateTimer: NodeJS.Timer;
 let songIndex: number = 0;
+let volume = 0;
 
 let song_data: any
 
@@ -170,6 +171,9 @@ function seekTo() {
 
 function setVolume() {
     current_track.volume = volume_slider.valueAsNumber / 100;
+    if (volume_slider.valueAsNumber > 0) {
+        volume = volume_slider.valueAsNumber;
+    }
     let volume_icon = document.getElementById("volume_icon")!;
     volume_icon.classList.forEach((item) => {
         volume_icon.classList.remove(item);
@@ -181,6 +185,15 @@ function setVolume() {
     } else {
         volume_icon.classList.add('icon-volume-2');
     }
+}
+
+function toggleMuteVolume() {
+    if (volume_slider.valueAsNumber > 0) {
+        volume_slider.valueAsNumber = 0
+    } else {
+        volume_slider.valueAsNumber = volume
+    }
+    setVolume()
 }
 
 function seekUpdate() {
@@ -231,6 +244,9 @@ function Playbar() {
         volume_slider = document.getElementById("volume")! as HTMLInputElement;
         playtime_slider = document.getElementById("slider")! as HTMLInputElement;
         tools = document.getElementById("tools")!;
+
+        //Fetch and store volume eventually to continue it between sessions.
+        volume = volume_slider.valueAsNumber;
         resetValues();
     });
     return (
@@ -273,7 +289,7 @@ function Playbar() {
             </div>
             <div className="volume_controls">
                 <input type="range" min="0" max="100" className="volume" id="volume" onChange={setVolume}/>
-                <i className="icon-volume-2" id="volume_icon"></i>
+                <i className="icon-volume-2" id="volume_icon" onClick={toggleMuteVolume}></i>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ ThunderBox is a small project of mine where I plan to create a web music player.
 Currently, it is pretty early on in development and there's a lot more I plan to add.
 Some features I want to add are playlists, more songs, and the ability to upload them.
 For now there are only 3 songs and a default playlist to play.
-For now This site isnt designed to work with Mobile devices, but I plan to change that soon.
+For now this site isn't designed to work with mobile devices, but I plan to change that soon.
 
 # Planned Features
 

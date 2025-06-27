@@ -20,11 +20,11 @@
 }
 
 .searchbar:focus {
-    outline: #1987ff solid 1px;
+    outline: var(--accent-color) solid 1px;
 }
 
 .archive_link {
-    color: #1c5aa8;
+    color: var(--accent-color);
 }
 
 .archive_link:hover {

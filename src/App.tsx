@@ -10,6 +10,7 @@ import CreateAccount from "./components/login/CreateAccount";
 import ForgotPassword from "./components/login/ForgotPassword";
 import Playlist from './components/playlist/Playlist';
 import Search from "./components/Search/Search";
+import Settings from "./components/settings/Settings";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                   <Route path="ThunderBox/createaccount" element={<CreateAccount />}/>
                   <Route path="ThunderBox/forgotpassword" element={<ForgotPassword/>}/>
                   <Route path="ThunderBox/search" element={<Search />}/>
+                  <Route path="ThunderBox/settings" element={<Settings />}/>
               </Routes>
           </main>
       </>

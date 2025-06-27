@@ -2,11 +2,12 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: #0a0d13;
+    background-color: var(--secondary-color);
     min-width: 200px;
     height: 100vh;
     padding: 0;
     align-items: center;
+    z-index: 3;
 }
 
 img {
@@ -21,7 +22,7 @@ img {
 }
 
 .nav_link {
-    color: white;
+    color: var(--text-color);
     background-color: transparent;
     font-size: 20px;
     padding: 10px 40px;
@@ -31,22 +32,15 @@ img {
 .nav_link > i {
     padding-right: 15px;
 }
-.nav_link:hover {
-    background-color: #141a25;
-    color: #1987ff;
-}
 
-.settings {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    bottom: 100px;
-    color: white;
+.nav_link:hover {
+    background-color: var(--tertiary-color);
+    color: var(--accent-color);
 }
 
 .account {
     display: flex;
-    background-color: #191c2b;
+    background-color: var(--tertiary-color);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -55,7 +49,7 @@ img {
 .account_button {
     position: absolute;
     display: flex;
-    color: white;
+    color: var(--text-color);
     background-color: transparent;
     font-size: 30px;
 }
@@ -66,9 +60,17 @@ img {
     top: 8px;
 }
 
+.settings {
+     display: flex;
+     align-items: center;
+     position: fixed;
+     bottom: 100px;
+     color: var(--text-color);
+ }
+
 .settings_button {
     padding: 20px;
-    color: white;
+    color: var(--text-color);
     background-color: transparent;
     font-size: 30px;
     position: relative;
@@ -76,9 +78,9 @@ img {
 }
 
 .account_button:hover {
-    color: #1987ff;
+    color: var(--accent-color);
 }
 
 .settings_button:hover {
-    color: #1987ff;
+    color: var(--accent-color);
 }

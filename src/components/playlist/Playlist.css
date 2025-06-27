@@ -6,14 +6,14 @@
 .divider {
     width: 90%;
     margin: 20px auto 30px auto;
-    border: 2px solid #1987ff;
+    border: 2px solid var(--accent-color);
     border-radius: 1px;
 }
 
 .toolbar {
     text-align: center;
     font-size: 35px;
-    color: white;
+    color: var(--text-color);
 }
 
 .toolbar span {
@@ -22,7 +22,7 @@
 }
 
 .toolbar span:hover {
-    color: #1987ff;
+    color: var(--accent-color);
 }
 
 #songs {
@@ -35,19 +35,19 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    background-color: #1a212b;
+    background-color: var(--quaternary-color);
     width: 90%;
     height: 50px;
     margin: 5px;
     padding: 3px;
     border-radius: 5px;
-    color: white;
+    color: var(--text-color);
     transition: all 300ms ease-in-out;
 }
 
 .playlist_song:hover {
     transform: scale(1.01);
-    outline: #1c5aa8 solid 1px;
+    outline: var(--accent-color) solid 1px;
 }
 
 .song-info {

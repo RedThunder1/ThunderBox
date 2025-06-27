@@ -1,9 +1,9 @@
 .playbar {
-    z-index: 1;
+    z-index: 4;
     position: fixed;
     width: 100vw;
     min-height: 90px;
-    background: #08090e;
+    background: var(--tertiary-color);
     bottom: 0;
 }
 
@@ -20,13 +20,13 @@
 }
 
 .control {
-    color: white;
+    color: var(--text-color);
     background-color: transparent;
     font-size: 35px;
 }
 
 .control:hover {
-    color: #1987ff;
+    color: var(--accent-color);
 }
 
 .playtime_slider {
@@ -34,7 +34,7 @@
 }
 
 .playtime {
-    color: white;
+    color: var(--text-color);
     position: relative;
     left: 220px;
     top: 30px;
@@ -58,24 +58,23 @@
     appearance: none;
     width: 25px;
     height: 20px;
-    background: #111420;
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
     height: 20px;
-    background: #111420;
+    background: var(--quaternary-color);
     cursor: pointer;
 }
 
 .slider::-moz-range-progress {
     height: 100%;
-    background: #1987ff;
+    background: var(--accent-color);
 }
 
 .slider::-ms-fill-lower {
     height: 100%;
-    background: #525359;
+    background: var(--accent-color);
 }
 
 .song_info {
@@ -87,7 +86,7 @@
     left: calc(50% - 150px);
     top: 10px;
     overflow: hidden;
-    color: white;
+    color: var(--text-color);
 }
 
 .song_photo {
@@ -119,7 +118,7 @@
     left: calc(50% + 100px);
     top: 20px;
     width: fit-content;
-    color: white;
+    color: var(--text-color);
     font-size: 35px;
 }
 
@@ -135,7 +134,7 @@
     border-radius: 5px;
     height: 100px;
     width: 100px;
-    background-color: #16181d;
+    background-color: var(--quaternary-color);
 }
 
 .clear_queue_button {
@@ -144,13 +143,13 @@
     width: 90px;
     height: 30px;
     border-radius: 2px;
-    background-color: #0a0d13;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     transition: background-color 200ms ease-in-out;
 }
 
 .clear_queue_button:hover {
-    background-color: #0b223e;
+    color: var(--accent-color);
 }
 
 .icon-heart:hover {
@@ -158,7 +157,7 @@
 }
 
 .icon-options-vertical:hover {
-    color: #1987ff;
+    color: var(--accent-color);
 }
 
 .closed {
@@ -172,13 +171,13 @@
 }
 
 .volume_controls > i {
-    color: white;
+    color: var(--text-color);
     font-size: 25px;
 }
 
 .volume {
     margin-right: 10px;
-    background-color: #0e1119;
+    background-color: var(--secondary-color);
 }
 
 .volume::-webkit-slider-thumb {
@@ -186,22 +185,22 @@
     appearance: none;
     width: 25px;
     height: 20px;
-    background: #111420;
+    background: var(--primary-color);
 }
 
 .volume::-moz-range-thumb {
     width: 25px;
     height: 20px;
-    background: #0b223e;
+    background: var(--primary-color);
     cursor: pointer;
 }
 
 .volume::-moz-range-progress {
     height: 100%;
-    background: #16181d;
+    background: var(--quaternary-color);
 }
 
 .volume::-ms-fill-lower {
     height: 100%;
-    background: #16181d;
+    background: var(--quaternary-color);
 }
