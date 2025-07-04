@@ -11,10 +11,12 @@ import ForgotPassword from "./components/login/ForgotPassword";
 import Playlist from './components/playlist/Playlist';
 import Search from "./components/Search/Search";
 import Settings from "./components/settings/Settings";
+import Loading from './components/Loading/Loading';
 
 function App() {
     return (
       <>
+          <Loading />
           <Navbar/>
           <Playbar />
           <main>
